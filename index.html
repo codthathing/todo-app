@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="This is created to help in keeping tracks of our daily goals">
+    <link rel="stylesheet" href="style.css">
+    <title>To-Do List</title>
+</head>
+<body>
+    <div id="to-div">
+        <h1 style="color: green;">To-Do List</h1>
+        <input type="text" placeholder="To-Do Item! " name="" id="todo-item">
+        <input type="button" class="button" value="Add" id="sub-btn">
+    </div>
+    <div>
+        <ol id="ol-list">
+        
+        </ol>
+    </div>
+    <div id="pop-up">
+        <div id="inner-pop">
+            <ul>
+            <li style="list-style: none;"><a id="ret-btn">&times;</a></li>
+            </ul>
+            <h1 style="text-align: center;">Congrats! You have completed a list.</h1>
+        </div>    
+    </div>
+    <div>
+        <input type="button" class="button" id="clear-btn" value="Clear List">
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>

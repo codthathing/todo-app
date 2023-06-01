@@ -1,0 +1,65 @@
+#to-div {
+    text-align: center;
+    border: 2px solid green;
+    border-radius: 1rem;
+    padding: 0.5rem;
+}
+
+.button {
+    background-color: green;
+    color: white;
+    border: hidden;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+#btns {
+    background-color: green;
+    color: white;
+    border: hidden;
+    border-radius: 0.5rem;
+    padding: 0.5rem 1rem 0.5rem 1rem;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+#ret-btn {
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+}
+
+#todo-item {
+    height: 2rem;
+    border: 2px solid green;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+#list-div {
+    display: flex; 
+}
+
+#pop-up {
+    background: rgba(197, 197, 197, 0.5);
+    height: 0vh; 
+    position: fixed;
+    display: flex;
+    top: 0;
+    margin-left: -0.5rem;
+    justify-content: center;
+    align-items: center;
+}
+
+#inner-pop {
+    background-color: white;
+    color: black;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0.5rem;
+    display: none;
+}
