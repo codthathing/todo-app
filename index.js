@@ -19,14 +19,14 @@ subBtn.addEventListener("click", function() {
     }
 })
 
+let list=``
 function array() {
     let items = toItem.value
-    let list=""
         list+=`
         <li>
-           <div style="font-size: 1.2rem; margin-bottom: 0.5rem; word-break: keep-all;">${items}</div>
-           <button id="btns" style="margin-right: 1rem;" class="del-btn">Delete</button>
-           <button id="btns" class="don-btn">Done</button>
+           <div id="li-text">${items}</div>
+           <button style="margin-right: 1rem;" class="del-btn button">Delete</button>
+           <button class="don-btn button">Done</button>
         </li>   
         `
     oList.innerHTML+=list
@@ -47,16 +47,14 @@ for (var i=0; i<donBtn.length; i++) {
         var delList = this.parentElement;
         delList.style.display="none"
         localStorage.setItem("list", JSON.stringify(oList.innerHTML))
-        document.querySelector("#pop-up").style.height="100vh"
-        document.querySelector("#inner-pop").style.display="inline"
+        document.querySelector("#pop-up").classList.add("open-pop")
     }, false)
 }
 
 
 let retBtn = document.getElementById("ret-btn")
 retBtn.addEventListener("click", function() {
-    document.getElementById("pop-up").style.height="0vh"
-    document.getElementById("inner-pop").style.display="none"
+    document.getElementById("pop-up").classList.remove("open-pop")
 })
 
 cleBtn.addEventListener("click", function() {

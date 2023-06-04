@@ -9,26 +9,30 @@
     <title>To-Do List</title>
 </head>
 <body>
-    <div id="to-div">
-        <h1 style="color: green;">To-Do List</h1>
-        <input type="text" placeholder="To-Do Item! " name="" id="todo-item">
-        <input type="button" class="button" value="Add" id="sub-btn">
+
+    <div id="body">
+        <div id="to-div">
+            <h1 style="color: green;">To-Do List</h1>
+            <div id="text-div">
+                <input type="text" placeholder="To-Do Item! " name="" id="todo-item">
+                <input type="button" class="button" value="Add" id="sub-btn">
+            </div>
+        </div>
+        <div>
+            <ol id="ol-list">
+                
+            </ol>
+        </div>
+        <div>
+            <input type="button" class="button" id="clear-btn" value="Clear List">
+        </div>
     </div>
-    <div>
-        <ol id="ol-list">
-        
-        </ol>
-    </div>
+
     <div id="pop-up">
         <div id="inner-pop">
-            <ul>
-            <li style="list-style: none;"><a id="ret-btn">&times;</a></li>
-            </ul>
+            <button id="ret-btn">&times;</button>
             <h1 style="text-align: center;">Congrats! You have completed a list.</h1>
         </div>    
-    </div>
-    <div>
-        <input type="button" class="button" id="clear-btn" value="Clear List">
     </div>
 
     <script src="index.js"></script>
