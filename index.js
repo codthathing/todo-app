@@ -1,64 +1,50 @@
-let toItem = document.getElementById("todo-item")
-let subBtn = document.getElementById("sub-btn")
-let oList = document.getElementById("ol-list")
-let cleBtn = document.getElementById("clear-btn")
-let listDiv = document.getElementById("list-div")
+let toItem = document.getElementById("todo-item");
+let subBtn = document.getElementById("sub-btn");
+let oList = document.getElementById("ol-list");
+let cleBtn = document.getElementById("clear-btn");
+let listDiv = document.getElementById("list-div");
 
-//localStorage.clear()
-let saveMyList = JSON.parse(localStorage.getItem("list"))
-if (saveMyList) {
-    oList.innerHTML = saveMyList
-}
+let savedNotes = JSON.parse(localStorage.getItem("list"));
 
-subBtn.addEventListener("click", function() {
-    if (toItem.value) {
-        array()
-        toItem.value=""
-        localStorage.setItem("list", JSON.stringify(oList.innerHTML))
-        window.location.reload()
-    }
-})
+if (savedNotes === null) {
+  localStorage.setItem("list", JSON.stringify([]));
+};
 
-let list=``
-function array() {
-    let items = toItem.value
-        list+=`
-        <li>
-           <div id="li-text">${items}</div>
-           <button style="margin-right: 1rem;" class="del-btn button">Delete</button>
-           <button class="don-btn button">Done</button>
-        </li>   
-        `
-    oList.innerHTML+=list
-}
+subBtn.addEventListener("click", () => {
+  if (toItem.value) {
+    savedNotes = [...savedNotes, { id: Date.now(), text: toItem.value }];
+    localStorage.setItem("list", JSON.stringify(savedNotes));
+    toItem.value = "";
+    renderTask();
+  };
+});
 
-let delBtn = document.getElementsByClassName("del-btn")
-for (var x=0; x<delBtn.length; x++) {
-    delBtn[x].addEventListener("click", function() {
-        var delList = this.parentElement;
-        delList.style.display="none"
-        localStorage.setItem("list", JSON.stringify(oList.innerHTML))
-    }, false)
-}
+function deleteTask(id) {
+  savedNotes = savedNotes.filter((text) => text.id !== id);
+  localStorage.setItem("list", JSON.stringify(savedNotes));
+  renderTask();
+};
 
-let donBtn = document.getElementsByClassName("don-btn")
-for (var i=0; i<donBtn.length; i++) {
-    donBtn[i].addEventListener("click", function() {
-        var delList = this.parentElement;
-        delList.style.display="none"
-        localStorage.setItem("list", JSON.stringify(oList.innerHTML))
-        document.querySelector("#pop-up").classList.add("open-pop")
-    }, false)
-}
+function completeTask(id) {
+  deleteTask(id);
+  document.querySelector("#pop-up").classList.add("open-pop");
+};
 
+function renderTask() {
+  oList.innerHTML = savedNotes.map(({ id, text }) => {
+    return `
+      <li>
+        <div id="li-text">${text}</div>
+        <button style="margin-right: 1rem;" class="del-btn button" onclick="deleteTask(${id})">Delete</button>
+        <button class="don-btn button" onclick="completeTask(${id})">Done</button>
+      </li>`;
+  }).join("");
+};
 
-let retBtn = document.getElementById("ret-btn")
-retBtn.addEventListener("click", function() {
-    document.getElementById("pop-up").classList.remove("open-pop")
-})
+cleBtn.addEventListener("click", () => {
+  savedNotes = [];
+  localStorage.setItem("list", JSON.stringify([]));
+  renderTask();
+});
 
-cleBtn.addEventListener("click", function() {
-    listArr=[]
-    oList.innerHTML=""
-    localStorage.clear()
-})
+renderTask();
